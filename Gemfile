@@ -53,3 +53,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# rails_12factor（静的アセットファイルやログの保存先をHeroku用に微調整してくれるGem）は、開発環境ではなく本番環境で使用するGemの為、:productionで指定すると本番環境のみで使用されるように指定できる
+group :production do
+  gem 'rails_12factor'
+end
