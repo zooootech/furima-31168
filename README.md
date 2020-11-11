@@ -67,7 +67,7 @@
 
 ### Association
 
-- belongs_to :buys
+- belongs_to :buy
 - belongs_to :prefecture
 
 ## prefecturesテーブル
