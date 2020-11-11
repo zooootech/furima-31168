@@ -18,7 +18,6 @@
 - has_many :items
 - has_many :favorites
 - has_many :buys
-- has_many :addresses, through: :buys
 
 ## items テーブル
 
