@@ -32,7 +32,6 @@
 | date       | integer    | null: false                    |
 | prefecture | integer    | null: false                    |
 | user       | references | null: false, foreign_key: true |
-| buy        | references | foreign_key: true              |
 
 ### Association
 
