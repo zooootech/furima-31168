@@ -57,7 +57,7 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| postcode        | integer    | null: false                    |
+| postcode        | string     | null: false                    |
 | city            | string     | null: false                    |
 | block           | string     | null: false                    |
 | building        | string     |                                |
