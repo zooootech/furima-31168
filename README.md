@@ -66,7 +66,7 @@
 
 ### Association
 
-- has_many :buys
+- belongs_to :buys
 - belongs_to :prefecture
 
 ## prefecturesテーブル
@@ -91,4 +91,4 @@
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :addresses
+- has_one :addresses
