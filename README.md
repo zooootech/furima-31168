@@ -26,10 +26,10 @@
 | name          | string     | null: false                    |
 | price         | integer    | null: false                    |
 | text          | text       | null: false                    |
-| category      | integer    | null: false                    |
-| condition     | integer    | null: false                    |
-| burden        | integer    | null: false                    |
-| date          | integer    | null: false                    |
+| category_id   | integer    | null: false                    |
+| condition_id  | integer    | null: false                    |
+| burden_id     | integer    | null: false                    |
+| date_id       | integer    | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 
