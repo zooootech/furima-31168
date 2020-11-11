@@ -67,8 +67,6 @@
 ### Association
 
 - has_many :buys
-- has_many :users, through: :buys
-- has_many :addresses, through: :buys
 - belongs_to :prefecture
 
 ## prefecturesテーブル
