@@ -24,7 +24,7 @@
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | name       | string     | null: false                    |
-| price      | int        | null: false                    |
+| price      | integer    | null: false                    |
 | text       | text       | null: false                    |
 | category   | string     | null: false                    |
 | condition  | string     | null: false                    |
@@ -58,7 +58,7 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| postcode        | int        | null: false                    |
+| postcode        | integer    | null: false                    |
 | city            | string     | null: false                    |
 | block           | string     | null: false                    |
 | building        | string     |                                |
