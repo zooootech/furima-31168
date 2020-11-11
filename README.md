@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| name       | string     | null: false                    |
-| price      | integer    | null: false                    |
-| text       | text       | null: false                    |
-| category   | integer    | null: false                    |
-| condition  | integer    | null: false                    |
-| burden     | integer    | null: false                    |
-| date       | integer    | null: false                    |
-| prefecture | integer    | null: false                    |
-| user       | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| price         | integer    | null: false                    |
+| text          | text       | null: false                    |
+| category      | integer    | null: false                    |
+| condition     | integer    | null: false                    |
+| burden        | integer    | null: false                    |
+| date          | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -55,14 +55,14 @@
 
 ## addressesテーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| postcode        | string     | null: false                    |
-| city            | string     | null: false                    |
-| block           | string     | null: false                    |
-| building        | string     |                                |
-| phone_number    | string     | null: false                    |
-| prefecture      | references | null: false, foreign_key: true |
+| Column          | Type       | Options     |
+| --------------- | ---------- | ----------- |
+| postcode        | string     | null: false |
+| city            | string     | null: false |
+| block           | string     | null: false |
+| building        | string     |             |
+| phone_number    | string     | null: false |
+| prefecture_id   | integer    | null: false |
 
 ### Association
 
