@@ -1,24 +1,95 @@
-# README
+# テーブルの設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | nill: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
+| birthday           | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :favorites
+- has_many :buys
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| price         | integer    | null: false                    |
+| text          | text       | null: false                    |
+| category_id   | integer    | null: false                    |
+| condition_id  | integer    | null: false                    |
+| burden_id     | integer    | null: false                    |
+| date_id       | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_many :favorites
+- has_many :users, through: :favorites
+- has_one :buy
+- belongs_to :prefecture
 
-* Services (job queues, cache servers, search engines, etc.)
+## favorites テーブル
 
-* Deployment instructions
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## addressesテーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| postcode        | string     | null: false                    |
+| city            | string     | null: false                    |
+| block           | string     | null: false                    |
+| building        | string     |                                |
+| phone_number    | string     | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| buy             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :buy
+- belongs_to :prefecture
+
+## prefecturesテーブル
+
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| name   | string | null: false |
+
+### Association
+
+- has_many :items
+- has_many :addresses
+
+## buys テーブル
+
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| user      | references | null: false  foreign_key: true |
+| item      | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
