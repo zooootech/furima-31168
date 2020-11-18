@@ -16,6 +16,10 @@ class Item < ApplicationRecord
     validates :image
   end
 
+  validates :name, length: { maximum: 40 }
+  validates :text, length: { maximum: 1000 }
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+
   with_options numericality: { greater_than_or_equal_to: 1 } do
     validates :category_id
     validates :condition_id
