@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_many :favorites
-- has_many :buys
+- has_one  :purchase
 
 ## items テーブル
 
@@ -32,13 +32,12 @@
 | days_to_ship_id    | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
 | user_id            | references | null: false, foreign_key: true |
-| buy_id             | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_many :favorites
-- has_one :buy
+- has_one :purchase
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :shipping_charge
@@ -67,14 +66,14 @@
 | building        | string     |                                |
 | phone_number    | string     | null: false                    |
 | prefecture_id   | integer    | null: false                    |
-| buy_id          | references | null: false, foreign_key: true |
+| purchase_id     | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to_active_hash :prefecture
-- belongs_to :buy
+- belongs_to :purchase
 
-## buys テーブル
+## purchases テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
