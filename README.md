@@ -21,32 +21,36 @@
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| name          | string     | null: false                    |
-| price         | integer    | null: false                    |
-| text          | text       | null: false                    |
-| category_id   | integer    | null: false                    |
-| condition_id  | integer    | null: false                    |
-| burden_id     | integer    | null: false                    |
-| date_id       | integer    | null: false                    |
-| prefecture_id | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| price              | integer    | null: false                    |
+| text               | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| shipping_charge_id | integer    | null: false                    |
+| days_to_ship_id    | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| user_id            | references | null: false, foreign_key: true |
+| buy_id             | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_many :favorites
-- has_many :users, through: :favorites
 - has_one :buy
-- belongs_to :prefecture
+- belongs_to_active_hash :category
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :shipping_charge
+- belongs_to_active_hash :days_to_ship
+- belongs_to_active_hash :prefecture
 
 ## favorites テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| user      | references | null: false, foreign_key: true |
-| item      | references | null: false, foreign_key: true |
+| user_id   | references | null: false, foreign_key: true |
+| item_id   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -63,30 +67,19 @@
 | building        | string     |                                |
 | phone_number    | string     | null: false                    |
 | prefecture_id   | integer    | null: false                    |
-| buy             | references | null: false, foreign_key: true |
+| buy_id          | references | null: false, foreign_key: true |
 
 ### Association
 
+- belongs_to_active_hash :prefecture
 - belongs_to :buy
-- belongs_to :prefecture
-
-## prefecturesテーブル
-
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| name   | string | null: false |
-
-### Association
-
-- has_many :items
-- has_many :addresses
 
 ## buys テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| user      | references | null: false  foreign_key: true |
-| item      | references | null: false, foreign_key: true |
+| user_id   | references | null: false  foreign_key: true |
+| item_id   | references | null: false, foreign_key: true |
 
 ### Association
 
