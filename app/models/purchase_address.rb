@@ -13,6 +13,7 @@ class PurchaseAddress
     validates :block
     validates :phone_number
     validates :prefecture_id, numericality: { greater_than_or_equal_to: 1, message: "can't be blank" }
+    validates :token, presence: true
   end
 
   validates :postcode, format: { with: VALID_POSTCODE_REGEX }, allow_blank: true
