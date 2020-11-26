@@ -19,7 +19,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it 'priceが¥300~9,999,999であれば出品できる' do
-        @item.price = 70000
+        @item.price = 70_000
         expect(@item).to be_valid
       end
     end
@@ -43,57 +43,57 @@ RSpec.describe Item, type: :model do
       it 'category_idに数字が入っていないと出品できない' do
         @item.category_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is not a number")
+        expect(@item.errors.full_messages).to include('Category is not a number')
       end
       it 'condition_idに数字が入っていないと出品できない' do
         @item.condition_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition is not a number")
+        expect(@item.errors.full_messages).to include('Condition is not a number')
       end
       it 'shipping_charge_idに数字が入っていないと出品できない' do
         @item.shipping_charge_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge is not a number")
+        expect(@item.errors.full_messages).to include('Shipping charge is not a number')
       end
       it 'prefecture_idに数字が入っていないと出品できない' do
         @item.prefecture_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture is not a number")
+        expect(@item.errors.full_messages).to include('Prefecture is not a number')
       end
       it 'days_to_ship_idに数字が入っていないと出品できない' do
         @item.days_to_ship_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to ship is not a number")
+        expect(@item.errors.full_messages).to include('Days to ship is not a number')
       end
       it 'nameが41文字以上だと出品できない' do
         @item.name = 'あ' * 41
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+        expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
       it 'textが1001文字以上だと出品できない' do
         @item.text = 'あ' * 1001
         @item.valid?
-        expect(@item.errors.full_messages).to include("Text is too long (maximum is 1000 characters)")
+        expect(@item.errors.full_messages).to include('Text is too long (maximum is 1000 characters)')
       end
       it 'priceが¥300未満だと出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが¥10,000,000以上だと出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'priceが半角数字でなければ出品できない' do
         @item.price = '７００００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'userが紐付いていないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end

@@ -38,7 +38,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'postcodeにハイフン「-」がないと購入できない' do
         @purchase_address.postcode = '1234567'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postcode is invalid")
+        expect(@purchase_address.errors.full_messages).to include('Postcode is invalid')
       end
       it 'cityが空では購入できない' do
         @purchase_address.city = ''
@@ -58,14 +58,13 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberが10桁もしくは11桁の数字以外だと購入できない' do
         @purchase_address.phone_number = '090123456789'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberにハイフンが含まれると購入できない' do
         @purchase_address.phone_number = '090-123-456'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
-
     end
   end
 end

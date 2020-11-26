@@ -1,9 +1,9 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor  :user_id, :item_id, :postcode, :city, :block, :building, :phone_number, :prefecture_id, :token
+  attr_accessor :user_id, :item_id, :postcode, :city, :block, :building, :phone_number, :prefecture_id, :token
 
-  VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
-  VALID_POSTCODE_REGEX = /\A\d{3}[-]\d{4}\z/
+  VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/.freeze
+  VALID_POSTCODE_REGEX = /\A\d{3}-\d{4}\z/.freeze
 
   with_options presence: true do
     validates :user_id

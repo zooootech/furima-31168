@@ -1,11 +1,9 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @item = Item.find(params[:item_id])
-    if current_user == @item.user || @item.purchase.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user == @item.user || @item.purchase.present?
     @purchase_address = PurchaseAddress.new
   end
 
@@ -28,10 +26,10 @@ class PurchasesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,  # 商品の値段
-      card: purchase_params[:token],    # カードトークン
+      card: purchase_params[:token], # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
