@@ -12,12 +12,15 @@ class PurchaseAddress
     validates :city
     validates :block
     validates :phone_number
-    validates :prefecture_id, numericality: { greater_than_or_equal_to: 1, message: "can't be blank" }
+    validates :prefecture_id
     validates :token, presence: true
   end
 
-  validates :postcode, format: { with: VALID_POSTCODE_REGEX }, allow_blank: true
-  validates :phone_number, format: { with: VALID_PHONE_NUMBER_REGEX }, allow_blank: true
+  with_options allow_blank: true do
+    validates :postcode, format: { with: VALID_POSTCODE_REGEX }
+    validates :phone_number, format: { with: VALID_PHONE_NUMBER_REGEX }
+    validates :prefecture_id, numericality: { greater_than_or_equal_to: 1, message: "can't be blank" }
+  end
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
