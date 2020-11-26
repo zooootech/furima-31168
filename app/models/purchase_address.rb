@@ -13,7 +13,7 @@ class PurchaseAddress
     validates :block
     validates :phone_number
     validates :prefecture_id
-    validates :token, presence: true
+    validates :token
   end
 
   with_options allow_blank: true do
