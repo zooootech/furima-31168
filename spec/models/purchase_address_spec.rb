@@ -60,7 +60,7 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
-      it 'phone_numberにハイフンが含まれると購入できない' do
+      it 'phone_numberにハイフン「-」が含まれると購入できない' do
         @purchase_address.phone_number = '090-123-456'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
