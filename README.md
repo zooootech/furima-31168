@@ -16,7 +16,6 @@
 ### Association
 
 - has_many :items
-- has_many :favorites
 - has_one  :purchase
 
 ## items テーブル
@@ -36,25 +35,12 @@
 ### Association
 
 - belongs_to :user
-- has_many :favorites
 - has_one :purchase
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :shipping_charge
 - belongs_to_active_hash :days_to_ship
 - belongs_to_active_hash :prefecture
-
-## favorites テーブル
-
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| user_id   | references | null: false, foreign_key: true |
-| item_id   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
 
 ## addressesテーブル
 
