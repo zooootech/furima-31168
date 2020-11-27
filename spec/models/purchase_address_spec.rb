@@ -65,6 +65,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
       end
+      it 'prefecture_idが0だと購入できない' do
+        @purchase_address.prefecture_id = 0
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
+      end
     end
   end
 end
